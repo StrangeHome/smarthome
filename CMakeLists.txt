@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
-project(
-    smarthome-distribution
-    HOMEPAGE_URL "https://github.com/haydenmcp/smarthome"
-    LANGUAGES CXX
-)
+project(smarthome-distribution LANGUAGES CXX HOMEPAGE_URL "https://github.com/haydenmcp/smarthome")
 include(GNUInstallDirs)
 
 # TODO: Replace this standard designation with specific cxx feature registry.
@@ -18,6 +14,7 @@ endif()
 
 option(SMARTHOME_INCLUDE_CLI "Include distribution command-line interface (CLI)" ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_SOURCES "Include distribution sources." ${SMARTHOME_MASTER_PROJECT})
+option(SMARTHOME_INCLUDE_EXAMPLES "Include distribution sources." ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_TESTS "Include distribution tests." ${SMARTHOME_MASTER_PROJECT})
 
 if (SMARTHOME_INCLUDE_CLI)
@@ -26,6 +23,10 @@ endif()
 
 if (SMARTHOME_INCLUDE_SOURCES)
     add_subdirectory("smarthome")
+endif()
+
+if (SMARTHOME_INCLUDE_EXAMPLES)
+    add_subdirectory("example")
 endif()
 
 if (SMARTHOME_INCLUDE_TESTS)
