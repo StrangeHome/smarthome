@@ -12,6 +12,9 @@ if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
     set(SMARTHOME_MASTER_PROJECT ON)
 endif()
 
+set(SMARTHOME_DEPENDENCY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/_dep" CACHE PATH 
+    "Directory into which dependencies will be stored." FORCE)
+
 option(SMARTHOME_INCLUDE_CLI "Include distribution command-line interface (CLI)" ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_SOURCES "Include distribution sources." ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_EXAMPLES "Include distribution sources." ${SMARTHOME_MASTER_PROJECT})
