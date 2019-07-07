@@ -1,6 +1,3 @@
-include(FetchContent)
-set(FETCHCONTENT_QUIET OFF)
-
 message(STATUS "Fetching smarthome CLI dependencies")
 FetchContent_Declare(
     cli11
