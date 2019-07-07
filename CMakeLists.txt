@@ -16,22 +16,29 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/stage CACHE PATH "Default installation prefix." FORCE)
 endif()
 
-if (WIN32)
-    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-endif()
-
 set(SMARTHOME_MASTER_PROJECT OFF)
 if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
     set(SMARTHOME_MASTER_PROJECT ON)
 endif()
 
-set(SMARTHOME_DEPENDENCY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/_dep" CACHE PATH 
-    "Directory into which dependencies will be stored." FORCE)
+math(EXPR SMARTHOME_TARGET_ARCHITECTURE "8 * ${CMAKE_SIZEOF_VOID_P}")
+set(SMARTHOME_DEPENDENCY_DIR 
+    "${CMAKE_CURRENT_SOURCE_DIR}/_dep/${CMAKE_GENERATOR}/${SMARTHOME_TARGET_ARCHITECTURE}" 
+    CACHE 
+    PATH 
+    "Directory into which dependencies will be stored." 
+    FORCE)
 
 option(SMARTHOME_INCLUDE_CLI "Include distribution command-line interface (CLI)" ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_SOURCES "Include distribution sources." ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_EXAMPLES "Include distribution sources." ${SMARTHOME_MASTER_PROJECT})
 option(SMARTHOME_INCLUDE_TESTS "Include distribution tests." ${SMARTHOME_MASTER_PROJECT})
+
+if(WIN32)
+    message("\n")
+    message(STATUS "Building for Win32")
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
 
 if (SMARTHOME_INCLUDE_CLI)
     add_subdirectory("cli")
