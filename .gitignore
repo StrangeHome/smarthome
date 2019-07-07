@@ -1,6 +1,6 @@
 # Custom ignores
 *build*
-_deps
+_dep
 
 # Prerequisites
 *.d

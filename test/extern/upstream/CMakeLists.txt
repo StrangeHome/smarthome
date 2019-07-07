@@ -4,6 +4,12 @@ set(FETCHCONTENT_BASE_DIR "${SMARTHOME_DEPENDENCY_DIR}" CACHE PATH "" FORCE)
 
 message(STATUS "Fetching smarthome testing dependencies")
 
+if(WIN32)
+    # Prevent GoogleTest from overriding our compiler/linker options
+    # when building with Visual Studio
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+endif()
+
 FetchContent_Declare(
     googletest
     GIT_REPOSITORY "https://github.com/google/googletest.git"
