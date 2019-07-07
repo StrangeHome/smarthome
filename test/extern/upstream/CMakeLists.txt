@@ -1,7 +1,3 @@
-include(FetchContent)
-set(FETCHCONTENT_QUIET OFF)
-set(FETCHCONTENT_BASE_DIR "${SMARTHOME_DEPENDENCY_DIR}" CACHE PATH "" FORCE)
-
 message(STATUS "Fetching smarthome testing dependencies")
 if(MSVC)
     # Prevent GoogleTest from overriding our compiler/linker options
