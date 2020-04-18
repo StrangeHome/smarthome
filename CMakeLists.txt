@@ -14,7 +14,7 @@ set(FETCHCONTENT_BASE_DIR
 
 # TODO: Replace this standard designation with specific cxx feature registry.
 # This will avoid breakage that results from upgrading c++ versions (frailty)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(RELATIVE_PATH SMARTHOME_DISTRIBUTION_INSTALL_RELATIVE_RPATH
