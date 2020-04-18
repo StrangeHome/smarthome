@@ -1,3 +1,5 @@
+message(STATUS "Handling library headers...")
+
 add_subdirectory("smarthome/core")
 
 target_include_directories(
