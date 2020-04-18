@@ -1,9 +1,8 @@
-project(smarthome CXX)
+project(smarthome-core CXX)
 
-add_library(smarthome STATIC "")
-add_library(smarthome:: ALIAS smarthome)
+add_library(smarthome-core STATIC "")
+add_library(smarthome::core ALIAS smarthome-core)
 
-message(STATUS "Handling smarthome library dependencies")
 include("extern/upstream/CMakeLists.txt")
 
 message(STATUS "Handling smarthome library sources")
