@@ -47,7 +47,7 @@ option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${S
 add_subdirectory("core")
 
 if(INCLUDE_SMARTHOME_CLI)
-    add_subdirectory("cli")
+	# add_subdirectory("cli")
 endif()
 
 if(INCLUDE_SMARTHOME_EXAMPLES)
@@ -56,7 +56,7 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
-    add_subdirectory("test")
+    # add_subdirectory("test")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)
