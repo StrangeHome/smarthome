@@ -41,13 +41,14 @@ endif()
 # Distribution options
 option(INCLUDE_SMARTHOME_EXAMPLES "Generate the smarthome package." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SMARTHOME_TESTS "Include smarthome distribution tests." ${SMARTHOME_MASTER_PROJECT})
-option(INCLUDE_SMARTHOME_CLI "Include smarthome distribution command-line interface (CLI)." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_SMARTHOME_CLI "Include smarthome distribution command-line interface (CLI)." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_SMARTDEVICE_LIBRARY "Include smartdevice package." ${SMARTHOME_MASTER_PROJECT})
 
 add_subdirectory("core")
 
-if(INCLUDE_SMARTHOME_CLI)
-	# add_subdirectory("cli")
+if(INCLUDE_SMARTHOME_DEVICE)
+	add_subdirectory("smartdevice")
 endif()
 
 if(INCLUDE_SMARTHOME_EXAMPLES)
@@ -56,7 +57,7 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
-    # add_subdirectory("test")
+    add_subdirectory("test")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)
