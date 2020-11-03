@@ -4,4 +4,4 @@ FetchContent_Declare(
     GIT_REPOSITORY "https://github.com/CLIUtils/CLI11"
     GIT_TAG "v1.8.0"
     GIT_PROGRESS TRUE)
-FetchContent_MakeAvailable(cli11)
+FetchContent_MakeAvailable(CLI11)

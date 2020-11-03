@@ -47,7 +47,7 @@ option(INCLUDE_SMARTDEVICE_LIBRARY "Include smartdevice package." ${SMARTHOME_MA
 
 add_subdirectory("core")
 
-if(INCLUDE_SMARTHOME_DEVICE)
+if(INCLUDE_SMARTDEVICE_LIBRARY)
 	add_subdirectory("smartdevice")
 endif()
 
@@ -57,7 +57,7 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
-    add_subdirectory("test")
+    # add_subdirectory("test")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)
