@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.14)
 project(
     smarthome-distribution
     DESCRIPTION "A stable and secure smart home implementation."
@@ -43,12 +43,13 @@ option(INCLUDE_SMARTHOME_EXAMPLES "Generate the smarthome package." ${SMARTHOME_
 option(INCLUDE_SMARTHOME_TESTS "Include smarthome distribution tests." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SMARTHOME_CLI "Include smarthome distribution command-line interface (CLI)." ${SMARTHOME_MASTER_PROJECT})
-option(INCLUDE_SMARTDEVICE_LIBRARY "Include smartdevice package." ${SMARTHOME_MASTER_PROJECT})
+
+option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJECT})
 
 add_subdirectory("core")
 
-if(INCLUDE_SMARTDEVICE_LIBRARY)
-	add_subdirectory("smartdevice")
+if(INCLUDE_DEVICE_PACKAGE)
+	add_subdirectory("device")
 endif()
 
 if(INCLUDE_SMARTHOME_EXAMPLES)
@@ -57,7 +58,6 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
-    # add_subdirectory("test")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)

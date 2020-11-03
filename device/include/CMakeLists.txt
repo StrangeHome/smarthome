@@ -1,9 +1,9 @@
-message(STATUS "Handling smartdevice library headers...")
+message(STATUS "Handling smarthome device library headers...")
 
-add_subdirectory("smartdevice")
+add_subdirectory("smarthome/device")
 
 target_include_directories(
-    smartdevice
+    smarthome-device
     INTERFACE
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
         "$<INSTALL_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
