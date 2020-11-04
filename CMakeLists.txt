@@ -47,6 +47,7 @@ option(INCLUDE_SMARTHOME_CLI "Include smarthome distribution command-line interf
 option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJECT})
 
 add_subdirectory("core")
+add_subdirectory("logger")
 
 if(INCLUDE_DEVICE_PACKAGE)
 	add_subdirectory("device")
