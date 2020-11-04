@@ -7,4 +7,7 @@ add_executable(smarthome-device-cli "${CMAKE_CURRENT_LIST_DIR}/cli.cpp")
 set_target_properties(smarthome-device-cli PROPERTIES OUTPUT_NAME "smartdevice")
 
 message(STATUS "Linking device CLI target libraries")
-target_link_libraries(smarthome-device-cli PRIVATE CLI11::CLI11)
+target_link_libraries(smarthome-device-cli
+    PRIVATE
+        smarthome-logger
+        CLI11::CLI11)
