@@ -1,7 +1,7 @@
 
 #include <smarthome/logger/logger.hpp>
 
-#include <memory>
+
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
@@ -28,35 +28,26 @@ namespace smarthome {
 
     } // anonymous namespace
 
-    /**
-     * A colored console logger.
-     */
-    class ColoredLogger : public Logger {
-        public:
-            ColoredLogger() : _logger( configure_logger() ) { }
+        Logger::Logger() : _logger( configure_logger() ) { }
 
-            void debug(const std::string msg) {
-                _logger->debug(msg);
-            }
+        void Logger::debug(const std::string msg) {
+            _logger->debug(msg);
+        }
 
-            void info(const std::string msg) {
-                _logger->info(msg);
-            }
+        void Logger::info(const std::string msg) {
+            _logger->info(msg);
+        }
 
-            void warn(const std::string msg) {
-                _logger->warn(msg);
-            }
+        void Logger::warn(const std::string msg) {
+            _logger->warn(msg);
+        }
 
-            void error(const std::string msg) {
-                _logger->error(msg);
-            }
+        void Logger::error(const std::string msg) {
+            _logger->error(msg);
+        }
 
-            void critical(const std::string msg) {
-                _logger->critical(msg);
-            }
-
-        private:
-            const std::shared_ptr<spdlog::logger> _logger;
-    };
+        void Logger::critical(const std::string msg) {
+            _logger->critical(msg);
+        }
 
 } // namespace smarthome

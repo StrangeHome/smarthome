@@ -1,4 +1,5 @@
 
+#include <memory>
 #include <string>
 #include <spdlog/spdlog.h>
 
@@ -9,6 +10,8 @@ namespace smarthome {
     */
     class Logger {
         public:
+            Logger();
+
             /**
              * Log the specified debug message.
              *
@@ -44,6 +47,8 @@ namespace smarthome {
              */
             void critical(const std::string msg);
 
+        private:
+            const std::shared_ptr<spdlog::logger> _logger;
     };
 
 } // namespace smarthome
