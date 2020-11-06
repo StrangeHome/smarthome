@@ -8,3 +8,5 @@ add_subdirectory("include")
 if (INCLUDE_SMARTHOME_TESTS)
     add_subdirectory("test")
 endif()
+
+target_compile_features(smarthome-service INTERFACE cxx_std_17)

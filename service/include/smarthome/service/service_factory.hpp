@@ -34,6 +34,7 @@ namespace smarthome {
             template <typename ConcreteImpl, typename AbstractBase>
             void Inject() {
                 // TODO
+                // auto typeInfo = typeid(AbstractBase);
             }
 
         private:
@@ -43,7 +44,7 @@ namespace smarthome {
              *
              * The use of std::any here allows abstraction of function signature differences so that objects of different types can be created.
              */
-            // std::unordered_map<std::type_info, std::any> _constructors { };
+            std::unordered_map<size_t, std::any> _constructors = std::unordered_map<size_t, std::any>();
     };
 
 } // namespace smarthome
