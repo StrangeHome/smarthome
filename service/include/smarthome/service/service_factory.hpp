@@ -1,5 +1,9 @@
+#pragma once
+
 #include <any>
+#include <iostream>
 #include <memory>
+#include <string>
 #include <unordered_map>
 #include <typeinfo>
 
@@ -22,7 +26,9 @@ namespace smarthome {
             template <typename AbstractBase>
             const std::shared_ptr<AbstractBase> Get() {
 
-                const auto key = typeid(AbstractBase).hash_code();
+                const auto key = std::string( typeid(AbstractBase).name() );
+
+                std::cout << "Abstract base class: " << key << std::endl;
 
                 // Ensure a concrete implementation is registered for the base
                 assert( _constructors.find(key) != _constructors.end() );
@@ -41,7 +47,10 @@ namespace smarthome {
             template <typename ConcreteImpl, typename AbstractBase>
             void Inject() {
 
-                const auto key = typeid(AbstractBase).hash_code();
+                const auto key = std::string( typeid(AbstractBase).name() );
+
+                std::cout << "Abstract base class: " << key << std::endl;
+
                 std::function< std::shared_ptr<AbstractBase>() > constructor = [] {
 
                     return std::shared_ptr<AbstractBase> (
@@ -51,14 +60,36 @@ namespace smarthome {
                 _constructors.insert({ key, constructor });
             }
 
+            /**
+             * Get the singleton instance.
+             *
+             * @return Singleton instance of the service factory.
+             */
+            static ServiceFactory& Instance() {
+
+                if (_instance == nullptr) {
+
+                    _instance = std::shared_ptr<ServiceFactory>(
+                        new ServiceFactory()
+                    );
+                }
+                return *_instance;
+            }
+
         private:
+            ServiceFactory() { }
 
             /**
              * A data structure used to store functions that construct concrete instances.
              *
              * The use of std::any here allows abstraction of function signature differences so that objects of different types can be created.
              */
-            std::unordered_map<size_t, std::any> _constructors { };
+            std::unordered_map<std::string, std::any> _constructors { };
+
+            /**
+             * Singleton instance of the factory.
+             */
+            static inline std::shared_ptr<ServiceFactory> _instance = nullptr;
     };
 
 } // namespace smarthome

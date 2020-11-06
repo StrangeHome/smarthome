@@ -1,7 +1,5 @@
-
-#include <memory>
+#pragma once
 #include <string>
-#include <spdlog/spdlog.h>
 
 namespace smarthome {
 
@@ -10,45 +8,41 @@ namespace smarthome {
     */
     class Logger {
         public:
-            Logger();
 
             /**
              * Log the specified debug message.
              *
              * @param msg Message to log.
              */
-            void debug(const std::string msg);
+            virtual void debug(const std::string msg) = 0;
 
             /**
              * Log the specified informational message.
              *
              * @param msg Message to log.
              */
-            void info(const std::string msg);
+            virtual void info(const std::string msg) = 0;
 
             /**
              * Log the specified warning message.
              *
              * @param msg Message to log.
              */
-            void warn(const std::string msg);
+            virtual void warn(const std::string msg) = 0;
 
             /**
              * Log the specified error message.
              *
              * @param msg Message to log.
              */
-            void error(const std::string msg);
+            virtual void error(const std::string msg) = 0;
 
             /**
              * Log the specified critical message.
              *
              * @param msg Message to log.
              */
-            void critical(const std::string msg);
-
-        private:
-            const std::shared_ptr<spdlog::logger> _logger;
+            virtual void critical(const std::string msg) = 0;
     };
 
 } // namespace smarthome
