@@ -14,7 +14,9 @@ set(FETCHCONTENT_BASE_DIR "${CMAKE_SOURCE_DIR}/_dep" CACHE PATH "Directory into 
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON CACHE BOOL "Ensure all windows symbols are exported." FORCE)
+
 
 file(TO_CMAKE_PATH "$ENV{SystemDrive}/smarthome" SMARTHOME_HOME)
 set(SMARTHOME_HOME "${SMARTHOME_HOME}" CACHE PATH "" FORCE)
@@ -48,6 +50,7 @@ option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJE
 
 add_subdirectory("core")
 add_subdirectory("logger")
+add_subdirectory("service")
 
 if(INCLUDE_DEVICE_PACKAGE)
 	add_subdirectory("device")
@@ -59,6 +62,7 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
+    add_subdirectory("mock")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)

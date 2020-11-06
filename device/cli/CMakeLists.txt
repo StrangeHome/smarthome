@@ -10,4 +10,5 @@ message(STATUS "Linking device CLI target libraries")
 target_link_libraries(smarthome-device-cli
     PRIVATE
         smarthome-logger
+        smarthome-service
         CLI11::CLI11)

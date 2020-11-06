@@ -1,5 +1,6 @@
 
 #include <smarthome/logger/logger.hpp>
+#include <smarthome/service/service_factory.hpp>
 
 #include <CLI/CLI.hpp>
 #include <CLI/App.hpp>
@@ -10,11 +11,10 @@
 //  for device run (i.e, ansible may be used to deploy to devices)
 //  2. Implement dependency injection subsystem for mockability of software components. This
 //  requires pure abstract bases. Implement in CPPJect project.
+//  3. Incorporate doxygen documentation generation.
 
 int main(int argc, char** argv) {
 
-    // TODO: The logger needs to be ILogger for mockability.
-    auto logger = smarthome::Logger();
     CLI::App cli{"Command-line Interface into smarthome devices."};
 
     bool start = false;
@@ -22,8 +22,11 @@ int main(int argc, char** argv) {
 
     CLI11_PARSE(cli, argc, argv);
 
-    if (start)
-        logger.info("Starting device...");
+    auto service_factory = smarthome::ServiceFactory();
+    // TODO
+    // auto logger = service_factory.Get<Logger>();
+    // if (start)
+    //     logger.info("Starting device...");
 
     return 0;
 }
