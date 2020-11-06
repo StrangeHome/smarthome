@@ -60,6 +60,7 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
+    add_subdirectory("mock")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)

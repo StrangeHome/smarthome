@@ -1,3 +1,5 @@
+project(smarthome-service CXX)
+
 add_library(smarthome-service STATIC "")
 add_library(smarthome::service ALIAS smarthome-service)
 
