@@ -11,6 +11,7 @@
 //  for device run (i.e, ansible may be used to deploy to devices)
 //  2. Implement dependency injection subsystem for mockability of software components. This
 //  requires pure abstract bases. Implement in CPPJect project.
+//  3. Incorporate doxygen documentation generation.
 
 int main(int argc, char** argv) {
 
