@@ -21,8 +21,11 @@ namespace smarthome {
              */
             template <typename AbstractBase>
             const std::shared_ptr<AbstractBase> Get() {
-                // TODO
-                return std::shared_ptr<AbstractBase>();
+
+                const auto key = typeid(AbstractBase).hash_code();
+                const auto generalizedConstructor = _constructors.at(key);
+                const auto constructor = std::any_cast< std::function<std::shared_ptr<AbstractBase>()> >(generalizedConstructor);
+                return constructor();
             }
 
             /**
@@ -33,8 +36,15 @@ namespace smarthome {
              */
             template <typename ConcreteImpl, typename AbstractBase>
             void Inject() {
-                // TODO
-                // auto typeInfo = typeid(AbstractBase);
+
+                const auto key = typeid(AbstractBase).hash_code();
+                std::function< std::shared_ptr<AbstractBase>() > constructor = [] {
+
+                    return std::shared_ptr<AbstractBase> (
+                        new ConcreteImpl()
+                    );
+                };
+                _constructors.insert({ key, constructor });
             }
 
         private:
@@ -44,7 +54,7 @@ namespace smarthome {
              *
              * The use of std::any here allows abstraction of function signature differences so that objects of different types can be created.
              */
-            std::unordered_map<size_t, std::any> _constructors = std::unordered_map<size_t, std::any>();
+            std::unordered_map<size_t, std::any> _constructors { };
     };
 
 } // namespace smarthome
