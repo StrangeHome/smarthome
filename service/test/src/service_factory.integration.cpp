@@ -28,8 +28,14 @@ TEST(ServiceFactory, ShouldAllowUserToFetchAConcreteImplementationUsingTheAbstra
 
     ServiceFactory serviceFactory { };
     try {
+        serviceFactory.Inject<ConcreteImpl, AbstractBase>();
         auto concreteImplementation = serviceFactory.Get<AbstractBase>();
     } catch(...) {
         FAIL();
     }
+}
+
+TEST(ServiceFactory, ShouldDieIfAnAttemptIsMadeToGetAnInstanceOfAnUnregisteredAbstractBaseClass) {
+    ServiceFactory serviceFactory { };
+    EXPECT_THROW(serviceFactory.Get<AbstractBase>(), std::exception);
 }

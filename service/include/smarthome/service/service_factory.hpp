@@ -23,6 +23,10 @@ namespace smarthome {
             const std::shared_ptr<AbstractBase> Get() {
 
                 const auto key = typeid(AbstractBase).hash_code();
+
+                // Ensure a concrete implementation is registered for the base
+                assert( _constructors.find(key) != _constructors.end() );
+
                 const auto generalizedConstructor = _constructors.at(key);
                 const auto constructor = std::any_cast< std::function<std::shared_ptr<AbstractBase>()> >(generalizedConstructor);
                 return constructor();
