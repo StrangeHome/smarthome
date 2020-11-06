@@ -1,5 +1,6 @@
 
 #include <smarthome/logger/logger.hpp>
+#include <smarthome/service/service_factory.hpp>
 
 #include <CLI/CLI.hpp>
 #include <CLI/App.hpp>
@@ -13,8 +14,6 @@
 
 int main(int argc, char** argv) {
 
-    // TODO: The logger needs to be ILogger for mockability.
-    auto logger = smarthome::Logger();
     CLI::App cli{"Command-line Interface into smarthome devices."};
 
     bool start = false;
@@ -22,8 +21,11 @@ int main(int argc, char** argv) {
 
     CLI11_PARSE(cli, argc, argv);
 
-    if (start)
-        logger.info("Starting device...");
+    auto service_factory = smarthome::ServiceFactory();
+    // TODO
+    // auto logger = service_factory.Get<Logger>();
+    // if (start)
+    //     logger.info("Starting device...");
 
     return 0;
 }

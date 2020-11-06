@@ -1,6 +1,0 @@
-
-namespace smarthome {
-
-
-
-} // namespace smarthome
