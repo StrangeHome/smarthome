@@ -1,0 +1,22 @@
+project(smarthome-service-tests CXX)
+
+add_executable(smarthome-service-tests "")
+
+message(STATUS "Adding service testing sources")
+add_subdirectory("src")
+
+message(STATUS "Handling testing dependencies")
+include("extern/upstream/CMakeLists.txt")
+
+message(STATUS "Linking testing targets")
+target_link_libraries(
+    smarthome-service-tests
+    PUBLIC
+        smarthome-service
+        gtest gtest_main gmock
+)
+
+add_test(
+    NAME smarthome-service-tests
+    COMMAND "$<TARGET_FILE:smarthome-service-tests>"
+)

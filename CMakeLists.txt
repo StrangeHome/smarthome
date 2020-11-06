@@ -48,6 +48,7 @@ option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJE
 
 add_subdirectory("core")
 add_subdirectory("logger")
+add_subdirectory("service")
 
 if(INCLUDE_DEVICE_PACKAGE)
 	add_subdirectory("device")
