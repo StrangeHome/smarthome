@@ -1,5 +1,7 @@
-
+#include <any>
 #include <memory>
+#include <unordered_map>
+#include <typeinfo>
 
 namespace smarthome {
 
@@ -18,16 +20,30 @@ namespace smarthome {
              * @return Shared pointer to the abstract base.
              */
             template <typename AbstractBase>
-            const std::shared_ptr<AbstractBase> Get();
+            const std::shared_ptr<AbstractBase> Get() {
+                // TODO
+                return std::shared_ptr<AbstractBase>();
+            }
 
             /**
              * Register a type with the service factory.
              *
-             * @tparam AbstractBase Abstract base class for which a concrete implementation is registered.
              * @tparam ConcreteImpl Concrete implementation to be injected.
+             * @tparam AbstractBase Abstract base class for which a concrete implementation is registered.
              */
-            template <typename AbstractBase, typename ConcreteImpl>
-            void Register();
+            template <typename ConcreteImpl, typename AbstractBase>
+            void Inject() {
+                // TODO
+            }
+
+        private:
+
+            /**
+             * A data structure used to store functions that construct concrete instances.
+             *
+             * The use of std::any here allows abstraction of function signature differences so that objects of different types can be created.
+             */
+            // std::unordered_map<std::type_info, std::any> _constructors { };
     };
 
 } // namespace smarthome
