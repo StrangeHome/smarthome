@@ -49,7 +49,9 @@ namespace smarthome {
                         new ConcreteImpl()
                     );
                 };
-                _constructors.insert({ _key<AbstractBase>(), constructor });
+
+                const auto key = _key<AbstractBase>();
+                _constructors.insert({ key, constructor });
             }
 
             /**
@@ -57,15 +59,11 @@ namespace smarthome {
              *
              * @return Singleton instance of the service factory.
              */
-            static ServiceFactory& Instance() {
+            static std::shared_ptr<ServiceFactory> Instance() {
 
-                if (_instance == nullptr) {
-
-                    _instance = std::shared_ptr<ServiceFactory>(
-                        new ServiceFactory()
-                    );
-                }
-                return *_instance;
+                if (_instance == nullptr)
+                    _instance = std::shared_ptr<ServiceFactory>( new ServiceFactory() );
+                return _instance;
             }
 
         private:
@@ -90,7 +88,8 @@ namespace smarthome {
              */
             template <typename AbstractBase>
             const std::string _name() {
-                return std::string( typeid(AbstractBase).name() );
+                const auto name = std::string( typeid(AbstractBase).name() );
+                return name;
             }
 
             /**
@@ -102,8 +101,9 @@ namespace smarthome {
             template <typename AbstractBase>
             const bool _registered() {
 
-                const auto key = typeid(AbstractBase).hash_code();
-                return _constructors.find(key) == _constructors.end();
+                const auto key = _key<AbstractBase>();
+                const auto found = _constructors.find(key) != _constructors.end();
+                return found;
             }
 
             /**
@@ -116,7 +116,7 @@ namespace smarthome {
             /**
              * Singleton instance of the factory.
              */
-            static inline std::shared_ptr<ServiceFactory> _instance = nullptr;
+            inline static std::shared_ptr<ServiceFactory> _instance = nullptr;
     };
 
 } // namespace smarthome

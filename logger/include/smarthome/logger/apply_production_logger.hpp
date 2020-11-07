@@ -6,14 +6,15 @@
 
 namespace smarthome {
 
-    static const struct ApplyProductionLogger {
+    const struct ApplyProductionLogger {
         public:
             ApplyProductionLogger() {
+
                 auto serviceFactory = ServiceFactory::Instance();
 
-                serviceFactory.Inject<ColoredLogger, Logger>();
+                serviceFactory->Inject<ColoredLogger, Logger>();
 
-                auto logger = serviceFactory.Get<Logger>();
+                auto logger = serviceFactory->Get<Logger>();
                 logger->info("Applied production logger.");
             }
     } applyProductionLogger;

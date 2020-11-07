@@ -14,11 +14,16 @@ class ConcreteImpl : public AbstractBase {
         void SomeFunction() { }
 };
 
+TEST(ServiceFactory, ShouldDieIfAnAttemptIsMadeToGetAnInstanceOfAnUnregisteredAbstractBaseClass) {
+    auto serviceFactory = ServiceFactory::Instance();
+    EXPECT_THROW(serviceFactory->Get<AbstractBase>(), ConcreteImplementationNotRegistered);
+}
+
 TEST(ServiceFactory, ShouldAllowUserToRegisterConcreteImplementations) {
 
     auto serviceFactory = ServiceFactory::Instance();
     try {
-        serviceFactory.Inject<ConcreteImpl, AbstractBase>();
+        serviceFactory->Inject<ConcreteImpl, AbstractBase>();
     } catch (...) {
         FAIL();
     }
@@ -28,14 +33,9 @@ TEST(ServiceFactory, ShouldAllowUserToFetchAConcreteImplementationUsingTheAbstra
 
     auto serviceFactory = ServiceFactory::Instance();
     try {
-        serviceFactory.Inject<ConcreteImpl, AbstractBase>();
-        auto concreteImplementation = serviceFactory.Get<AbstractBase>();
+        serviceFactory->Inject<ConcreteImpl, AbstractBase>();
+        auto concreteImplementation = serviceFactory->Get<AbstractBase>();
     } catch(...) {
         FAIL();
     }
-}
-
-TEST(ServiceFactory, ShouldDieIfAnAttemptIsMadeToGetAnInstanceOfAnUnregisteredAbstractBaseClass) {
-    auto serviceFactory = ServiceFactory::Instance();
-    EXPECT_THROW(serviceFactory.Get<AbstractBase>(), ConcreteImplementationNotRegistered);
 }

@@ -17,14 +17,15 @@ namespace smarthome {
 
         const std::shared_ptr<spdlog::logger> configure_logger() {
 
-            // create color multi threaded logger
-            auto console = spdlog::stdout_color_mt("console");
-            auto err_logger = spdlog::stderr_color_mt("stderr");
-            spdlog::set_level(spdlog::level::debug);
-
-            spdlog::get("console")->debug("Logger configured.");
-
-            return console;
+            auto logger = spdlog::get("console");
+            if (logger == nullptr) {
+                // create color multi threaded logger
+                logger = spdlog::stdout_color_mt("console");
+                auto err_logger = spdlog::stderr_color_mt("stderr");
+                spdlog::set_level(spdlog::level::debug);
+                spdlog::get("console")->debug("Logger configured.");
+            }
+            return logger;
         }
 
     } // anonymous namespace
