@@ -37,5 +37,5 @@ TEST(ServiceFactory, ShouldAllowUserToFetchAConcreteImplementationUsingTheAbstra
 
 TEST(ServiceFactory, ShouldDieIfAnAttemptIsMadeToGetAnInstanceOfAnUnregisteredAbstractBaseClass) {
     auto serviceFactory = ServiceFactory::Instance();
-    EXPECT_THROW(serviceFactory.Get<AbstractBase>(), std::exception);
+    EXPECT_THROW(serviceFactory.Get<AbstractBase>(), ConcreteImplementationNotRegistered);
 }
