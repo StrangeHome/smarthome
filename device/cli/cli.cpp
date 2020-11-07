@@ -11,6 +11,8 @@
 //  . Create automation scripts in Python (platform agnostic) to configure BeagelBone Black
 //  for device run (i.e, ansible may be used to deploy to devices)
 //  . Incorporate doxygen documentation generation.
+//  . Incorporate SonarQube scanning for heightened security and code quality checks.
+//  . Incorporate ansible for management of multiple edge IoT devices.
 
 int main(int argc, char** argv) {
 
