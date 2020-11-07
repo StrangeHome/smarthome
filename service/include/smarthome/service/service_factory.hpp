@@ -1,7 +1,11 @@
+#pragma once
+
 #include <any>
 #include <memory>
 #include <unordered_map>
 #include <typeinfo>
+
+#include <smarthome/service/exception.hpp>
 
 namespace smarthome {
 
@@ -22,8 +26,10 @@ namespace smarthome {
             template <typename AbstractBase>
             const std::shared_ptr<AbstractBase> Get() {
 
-                const auto key = typeid(AbstractBase).hash_code();
-                const auto generalizedConstructor = _constructors.at(key);
+                if ( !_registered<AbstractBase>() )
+                    throw ConcreteImplementationNotRegistered( _name<AbstractBase>() );
+
+                const auto generalizedConstructor = _constructors.at( _key<AbstractBase>() );
                 const auto constructor = std::any_cast< std::function<std::shared_ptr<AbstractBase>()> >(generalizedConstructor);
                 return constructor();
             }
@@ -37,17 +43,68 @@ namespace smarthome {
             template <typename ConcreteImpl, typename AbstractBase>
             void Inject() {
 
-                const auto key = typeid(AbstractBase).hash_code();
                 std::function< std::shared_ptr<AbstractBase>() > constructor = [] {
 
                     return std::shared_ptr<AbstractBase> (
                         new ConcreteImpl()
                     );
                 };
+
+                const auto key = _key<AbstractBase>();
                 _constructors.insert({ key, constructor });
             }
 
+            /**
+             * Get the singleton instance.
+             *
+             * @return Singleton instance of the service factory.
+             */
+            static std::shared_ptr<ServiceFactory> Instance() {
+
+                if (_instance == nullptr)
+                    _instance = std::shared_ptr<ServiceFactory>( new ServiceFactory() );
+                return _instance;
+            }
+
         private:
+            ServiceFactory() { }
+
+            /**
+             * Get the key associated with an abstract base class.
+             *
+             * @tparam AbstractBase Abstract base class for which the key will be fetched.
+             * @return The key associated with the specified abstract base class.
+             */
+            template <typename AbstractBase>
+            const size_t _key() {
+                return typeid(AbstractBase).hash_code();
+            }
+
+            /**
+             * Get the name associated with the abstract base class.
+             *
+             * @tparam AbstractBase Abstract base class for which the name should be fetched.
+             * @return Name of the abstract base class.
+             */
+            template <typename AbstractBase>
+            const std::string _name() {
+                const auto name = std::string( typeid(AbstractBase).name() );
+                return name;
+            }
+
+            /**
+             * Check if a concrete implementation is registered for the specified abstract base class.
+             *
+             * @tparam AbstractBase Abstract base class for which registration will be checked.
+             * @return True if registered. False otherwise.
+             */
+            template <typename AbstractBase>
+            const bool _registered() {
+
+                const auto key = _key<AbstractBase>();
+                const auto found = _constructors.find(key) != _constructors.end();
+                return found;
+            }
 
             /**
              * A data structure used to store functions that construct concrete instances.
@@ -55,6 +112,11 @@ namespace smarthome {
              * The use of std::any here allows abstraction of function signature differences so that objects of different types can be created.
              */
             std::unordered_map<size_t, std::any> _constructors { };
+
+            /**
+             * Singleton instance of the factory.
+             */
+            inline static std::shared_ptr<ServiceFactory> _instance = nullptr;
     };
 
 } // namespace smarthome

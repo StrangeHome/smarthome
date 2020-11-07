@@ -1,4 +1,5 @@
 
+#include <smarthome/logger/apply_production_logger.hpp>
 #include <smarthome/logger/logger.hpp>
 #include <smarthome/service/service_factory.hpp>
 
@@ -7,11 +8,11 @@
 #include <string>
 
 // TODO List
-//  1. Create automation scripts in Python (platform agnostic) to configure BeagelBone Black
+//  . Create automation scripts in Python (platform agnostic) to configure BeagelBone Black
 //  for device run (i.e, ansible may be used to deploy to devices)
-//  2. Implement dependency injection subsystem for mockability of software components. This
-//  requires pure abstract bases. Implement in CPPJect project.
-//  3. Incorporate doxygen documentation generation.
+//  . Incorporate doxygen documentation generation.
+//  . Incorporate SonarQube scanning for heightened security and code quality checks.
+//  . Incorporate ansible for management of multiple edge IoT devices.
 
 int main(int argc, char** argv) {
 
@@ -22,11 +23,10 @@ int main(int argc, char** argv) {
 
     CLI11_PARSE(cli, argc, argv);
 
-    auto service_factory = smarthome::ServiceFactory();
-    // TODO
-    // auto logger = service_factory.Get<Logger>();
-    // if (start)
-    //     logger.info("Starting device...");
+    auto serviceFactory = smarthome::ServiceFactory::Instance();
+    auto logger = serviceFactory->Get<smarthome::Logger>();
+    if (start)
+        logger->info("Starting device...");
 
     return 0;
 }
