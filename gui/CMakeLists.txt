@@ -1,0 +1,1 @@
+project(smarthome-gui CXX)
