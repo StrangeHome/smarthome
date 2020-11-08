@@ -1,0 +1,1 @@
+project(smarthome-sensor CXX)

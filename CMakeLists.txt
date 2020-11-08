@@ -48,6 +48,8 @@ option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${S
 option(INCLUDE_SMARTHOME_CLI "Include smarthome distribution command-line interface (CLI)." ${SMARTHOME_MASTER_PROJECT})
 
 option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_GUI_PACKAGE "Include graphical user-interface package." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_SENSOR_PACKAGE "Include sensor package." ${SMARTHOME_MASTER_PROJECT})
 
 add_subdirectory("core")
 add_subdirectory("logger")
@@ -55,6 +57,14 @@ add_subdirectory("service")
 
 if(INCLUDE_DEVICE_PACKAGE)
 	add_subdirectory("device")
+endif()
+
+if(INCLUDE_GUI_PACKAGE)
+	add_subdirectory("gui")
+endif()
+
+if(INCLUDE_SENSOR_PACKAGE)
+	add_subdirectory("sensor")
 endif()
 
 if(INCLUDE_SMARTHOME_EXAMPLES)
