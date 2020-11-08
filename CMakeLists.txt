@@ -42,10 +42,10 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 endif()
 
 # Distribution options
-option(INCLUDE_SMARTHOME_EXAMPLES "Generate the smarthome package." ${SMARTHOME_MASTER_PROJECT})
-option(INCLUDE_SMARTHOME_TESTS "Include smarthome distribution tests." ${SMARTHOME_MASTER_PROJECT})
-option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SMARTHOME_CLI "Include smarthome distribution command-line interface (CLI)." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_SMARTHOME_DOCS "Include smarthome distribution documentation." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${SMARTHOME_MASTER_PROJECT})
+option(INCLUDE_SMARTHOME_TESTS "Include smarthome distribution tests." ${SMARTHOME_MASTER_PROJECT})
 
 option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_GUI_PACKAGE "Include graphical user-interface package." ${SMARTHOME_MASTER_PROJECT})
@@ -65,6 +65,10 @@ endif()
 
 if(INCLUDE_SENSOR_PACKAGE)
 	add_subdirectory("sensor")
+endif()
+
+if(INCLUDE_SMARTHOME_DOCS)
+	add_subdirectory("docs")
 endif()
 
 if(INCLUDE_SMARTHOME_EXAMPLES)
