@@ -1,9 +1,6 @@
 import subprocess
 
 def install_dependencies():
-    installed = subprocess.run(["which", "doxygen"])
-    if (installed):
-        return
 
     aptitude = subprocess.run(["which", "apt-get"])
     if (aptitude):
