@@ -2,12 +2,12 @@
 A smart home implementation designed with privacy, security, simplicity and production-grade stability in mind.
 
 ## Dependencies
-1. Clang (C++17)
-1. CMake 3.14
-1. Googletest
-1. Doxygen
-1. Qt
-1. Python 3
+1. [Clang (C++17)](https://www.qt.io/developers)
+1. [CMake 3.14](https://cmake.org/)
+1. [Googletest](https://github.com/google/googletest)
+1. [Doxygen 1.8.17](https://github.com/doxygen/doxygen)
+1. [Qt 5.12.8](https://doc.qt.io/qt-5/gettingstarted.html)
+1. [Python 3.8.5](https://www.python.org/downloads/)
 
 ## Goals
 Looking into the future it seems like there will be demand for a privacy-centric smarthome implementation
