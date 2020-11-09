@@ -102,6 +102,11 @@ two primary linux flavors. With the goal of cross-platform compatibility, each m
 codebase needs to be tested on, at least, CentOS and Ubuntu. Windows machines will be added to the mix
 later on. This is the recommended practice for CMake as well.
 
+### Minimization of Codebase Diversity
+It's my intention to minimize introduction of different languages to the codebase. Each addition comes
+with careful consideration. This is done because each new language introduced limits the potential
+developers that can contribute to those who know all of the languages.
+
 ### Google C++ Style-guide Compliance
 In general, following companies that have large codebases and ample experience maintaining systems
 written in a particular language is a good idea. This ensures that new developers will be more
