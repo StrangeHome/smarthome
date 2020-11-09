@@ -2,7 +2,7 @@
 A smart home implementation designed with privacy, security, simplicity and production-grade stability in mind.
 
 ## Dependencies
-1. [Clang (C++17)](https://www.qt.io/developers)
+1. [Clang (C++17)](https://clang.llvm.org/)
 1. [CMake 3.14](https://cmake.org/)
 1. [Googletest](https://github.com/google/googletest)
 1. [Doxygen 1.8.17](https://github.com/doxygen/doxygen)
