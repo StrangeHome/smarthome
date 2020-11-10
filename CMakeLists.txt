@@ -51,6 +51,8 @@ option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJE
 option(INCLUDE_GUI_PACKAGE "Include graphical user-interface package." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SENSOR_PACKAGE "Include sensor package." ${SMARTHOME_MASTER_PROJECT})
 
+set(SMARTHOME_PACKAGE_DEPENDENCIES "git" "clang" "build-essential")
+
 add_subdirectory("core")
 add_subdirectory("logger")
 add_subdirectory("service")
@@ -77,10 +79,11 @@ endif()
 
 if(INCLUDE_SMARTHOME_TESTS)
     enable_testing()
-    add_subdirectory("mock")
 endif()
 
 if (GENERATE_SMARTHOME_PACKAGE)
     set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/license.txt")
     add_subdirectory("package")
 endif()
+
+include("setup/CMakeLists.txt")
