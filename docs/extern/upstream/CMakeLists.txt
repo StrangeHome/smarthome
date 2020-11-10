@@ -1,5 +1,3 @@
-message(STATUS "Fetching library dependencies")
 
-execute_process(
-    COMMAND "sudo" "python3" "install_dependencies.py"
-    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
+message(STATUS "Updating system dependencies to install.")
+set(SMARTHOME_PACKAGE_DEPENDENCIES ${SMARTHOME_PACKAGE_DEPENDENCIES} "bison" "flex" "graphviz" "doxygen" PARENT_SCOPE)
