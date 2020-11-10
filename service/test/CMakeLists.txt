@@ -12,7 +12,6 @@ message(STATUS "Linking testing targets")
 target_link_libraries(
     smarthome-service-mocks
     PUBLIC
-        smarthome-mock
         smarthome-service
         gtest gtest_main gmock
 )
