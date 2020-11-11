@@ -1,0 +1,15 @@
+{
+  "name": "smarthome-gui",
+  "version": "0.0.1",
+  "description": "Graphical user-interface into the smarthome system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haydenmcp/smarthome/gui"
+  },
+  "author": "Hayden McParlane",
+  "license": "GPL-1.0-only"
+}
