@@ -47,7 +47,6 @@ option(INCLUDE_SMARTHOME_EXAMPLES "Include smarthome distribution examples." ${S
 option(INCLUDE_SMARTHOME_TESTS "Include smarthome distribution tests." ${SMARTHOME_MASTER_PROJECT})
 
 option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJECT})
-option(INCLUDE_GUI_PACKAGE "Include graphical user-interface package." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SENSOR_PACKAGE "Include sensor package." ${SMARTHOME_MASTER_PROJECT})
 
 set(SMARTHOME_PACKAGE_DEPENDENCIES "git" "clang" "build-essential" "nodejs" "npm")
@@ -57,10 +56,6 @@ add_subdirectory("logger")
 
 if(INCLUDE_DEVICE_PACKAGE)
 	add_subdirectory("device")
-endif()
-
-if(INCLUDE_GUI_PACKAGE)
-	add_subdirectory("gui")
 endif()
 
 if(INCLUDE_SENSOR_PACKAGE)

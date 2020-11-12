@@ -174,7 +174,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-<<<<<<< HEAD
 Skip to content
 Search or jump to…
 
@@ -202,7 +201,6 @@ Latest commit 7293c14 on May 14
  58 contributors
 @stuartpb@shiftkey@SimonSiefke@TennyZhuang@venatoria@ro31337@Richienb@melonmanchan@gouthamve@jucrouzet@cheddar@arcresu
 116 lines (86 sloc)  1.77 KB
-=======
 # C++ objects and libs
 *.slo
 *.lo
@@ -257,7 +255,6 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
->>>>>>> 86d38cfc2e64d8625ea6a3707e9d465671c5aa6b
 
 # Logs
 logs
@@ -374,7 +371,6 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
-<<<<<<< HEAD
 .pnp.*
 Terms
 Privacy
@@ -387,6 +383,4 @@ API
 Training
 Blog
 About
-=======
 .pnp.*
->>>>>>> 86d38cfc2e64d8625ea6a3707e9d465671c5aa6b
