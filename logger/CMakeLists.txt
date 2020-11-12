@@ -10,7 +10,7 @@ add_subdirectory("include")
 message(STATUS "Linking logger library targets")
 target_link_libraries(smarthome-logger
     INTERFACE
-    smarthome-service
+    cppject
     spdlog::spdlog)
 
 if(INCLUDE_SMARTHOME_TESTS)
