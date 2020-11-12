@@ -19,13 +19,13 @@ def update_package_list(package_manager):
     print("Running: sudo " + package_manager + " update")
     subprocess.run(["sudo", package_manager, "update"])
 
-def install_dependencies(dependencies):
-    package_manager = get_package_manager()
-    update_package_list(package_manager)
-
+def install_dependencies(package_manager, dependencies):
     print("Running: sudo " + package_manager + " -y install " + str(dependencies))
     subprocess.run(["sudo", package_manager, "-y", "install", *dependencies])
 
 if __name__ == "__main__":
+
+    package_manager = get_package_manager()
     dependencies = get_dependencies_from_commandline()
-    install_dependencies(dependencies)
+    update_package_list(package_manager)
+    install_dependencies(package_manager, dependencies)

@@ -50,7 +50,7 @@ option(INCLUDE_DEVICE_PACKAGE "Include device package." ${SMARTHOME_MASTER_PROJE
 option(INCLUDE_GUI_PACKAGE "Include graphical user-interface package." ${SMARTHOME_MASTER_PROJECT})
 option(INCLUDE_SENSOR_PACKAGE "Include sensor package." ${SMARTHOME_MASTER_PROJECT})
 
-set(SMARTHOME_PACKAGE_DEPENDENCIES "git" "clang" "build-essential")
+set(SMARTHOME_PACKAGE_DEPENDENCIES "git" "clang" "build-essential" "nodejs" "npm")
 
 add_subdirectory("core")
 add_subdirectory("logger")
