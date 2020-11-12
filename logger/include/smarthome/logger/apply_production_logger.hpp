@@ -2,7 +2,7 @@
 
 #include <smarthome/logger/logger.hpp>
 #include <smarthome/logger/colored_logger.hpp>
-#include <smarthome/service/service_factory.hpp>
+#include <cppject/service_factory.hpp>
 
 namespace smarthome {
 

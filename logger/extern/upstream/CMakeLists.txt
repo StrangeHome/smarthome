@@ -6,4 +6,10 @@ FetchContent_Declare(
     GIT_TAG "v1.8.1"
     GIT_PROGRESS TRUE)
 
-FetchContent_MakeAvailable(spdlog)
+FetchContent_Declare(
+    cppject
+    GIT_REPOSITORY "https://github.com/haydenmcp/cppject"
+    GIT_TAG "v0.0.2-alpha"
+    GIT_PROGRESS TRUE)
+
+FetchContent_MakeAvailable(cppject spdlog)
