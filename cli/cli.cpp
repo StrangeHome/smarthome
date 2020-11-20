@@ -29,6 +29,9 @@ int main(int argc, char** argv) {
 
         logger->info("Auto-discovering devices...");
         client->DiscoverDevices();
+
+        logger->info("Configuring devices...");
+        client->ConfigureDevices();
     }
 
     return 0;

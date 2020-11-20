@@ -18,7 +18,7 @@ namespace smarthome {
                 serviceFactory->Inject<ClientImpl, Client>();
 
                 auto logger = serviceFactory->Get<Logger>();
-                logger->info("Applied production client.");
+                logger->debug("Applied production client.");
             }
     } applyProductionClient;
 
