@@ -10,7 +10,7 @@ namespace smarthome {
         public:
             ApplyProductionLogger() {
 
-                auto serviceFactory = ServiceFactory::Instance();
+                auto serviceFactory = cppject::ServiceFactory::Instance();
 
                 serviceFactory->Inject<ColoredLogger, Logger>();
 

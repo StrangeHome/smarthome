@@ -38,23 +38,23 @@ namespace smarthome {
 
             ColoredLogger() : _logger( configure_logger() ) { }
 
-            void debug(const std::string msg) {
+            void debug(const std::string msg) const override {
                 _logger->debug(msg);
             }
 
-            void info(const std::string msg) {
+            void info(const std::string msg) const override {
                 _logger->info(msg);
             }
 
-            void warn(const std::string msg) {
+            void warn(const std::string msg) const override {
                 _logger->warn(msg);
             }
 
-            void error(const std::string msg) {
+            void error(const std::string msg) const override {
                 _logger->error(msg);
             }
 
-            void critical(const std::string msg) {
+            void critical(const std::string msg) const override {
                 _logger->critical(msg);
             }
 

@@ -9,7 +9,7 @@ FetchContent_Declare(
 FetchContent_Declare(
     cppject
     GIT_REPOSITORY "https://github.com/haydenmcp/cppject"
-    GIT_TAG "v0.0.2-alpha"
+    GIT_TAG "main"
     GIT_PROGRESS TRUE)
 
 FetchContent_MakeAvailable(cli11 cppject)

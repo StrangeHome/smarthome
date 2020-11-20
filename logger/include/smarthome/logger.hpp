@@ -1,4 +1,6 @@
 #pragma once
+
+#include <memory>
 #include <string>
 
 namespace smarthome {
@@ -9,40 +11,42 @@ namespace smarthome {
     class Logger {
         public:
 
+            using shared_ptr = std::shared_ptr<Logger>;
+
             /**
              * Log the specified debug message.
              *
              * @param msg Message to log.
              */
-            virtual void debug(const std::string msg) = 0;
+            virtual void debug(const std::string msg) const = 0;
 
             /**
              * Log the specified informational message.
              *
              * @param msg Message to log.
              */
-            virtual void info(const std::string msg) = 0;
+            virtual void info(const std::string msg) const = 0;
 
             /**
              * Log the specified warning message.
              *
              * @param msg Message to log.
              */
-            virtual void warn(const std::string msg) = 0;
+            virtual void warn(const std::string msg) const = 0;
 
             /**
              * Log the specified error message.
              *
              * @param msg Message to log.
              */
-            virtual void error(const std::string msg) = 0;
+            virtual void error(const std::string msg) const = 0;
 
             /**
              * Log the specified critical message.
              *
              * @param msg Message to log.
              */
-            virtual void critical(const std::string msg) = 0;
+            virtual void critical(const std::string msg) const = 0;
     };
 
 } // namespace smarthome

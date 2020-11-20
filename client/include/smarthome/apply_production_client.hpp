@@ -13,7 +13,7 @@ namespace smarthome {
         public:
             ApplyProductionClient() {
 
-                auto serviceFactory = ServiceFactory::Instance();
+                auto serviceFactory = cppject::ServiceFactory::Instance();
 
                 serviceFactory->Inject<ClientImpl, Client>();
 

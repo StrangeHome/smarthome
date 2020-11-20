@@ -7,6 +7,8 @@
 #include <CLI/App.hpp>
 #include <string>
 
+using namespace cppject;
+
 int main(int argc, char** argv) {
 
     CLI::App cli{"Command-line Interface into smarthome devices."};
@@ -16,7 +18,7 @@ int main(int argc, char** argv) {
 
     CLI11_PARSE(cli, argc, argv);
 
-    auto serviceFactory = smarthome::ServiceFactory::Instance();
+    auto serviceFactory = ServiceFactory::Instance();
     auto logger = serviceFactory->Get<smarthome::Logger>();
     if (start)
         logger->info("Starting device...");

@@ -9,10 +9,12 @@
 #include <CLI/App.hpp>
 #include <string>
 
+using namespace cppject;
+
 int main(int argc, char** argv) {
 
     CLI::App cli{"Command-line Interface into the smarthome distribution."};
-    auto serviceFactory = smarthome::ServiceFactory::Instance();
+    auto serviceFactory = ServiceFactory::Instance();
     auto logger = serviceFactory->Get<smarthome::Logger>();
 
     // TODO:
@@ -27,10 +29,7 @@ int main(int argc, char** argv) {
 
     if (discoverDevices) {
 
-        logger->info("Auto-discovering devices...");
         client->DiscoverDevices();
-
-        logger->info("Configuring devices...");
         client->ConfigureDevices();
     }
 
