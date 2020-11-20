@@ -1,6 +1,10 @@
 
-#include <smarthome/apply_production_logger.hpp>
+#include <smarthome/client.hpp>
+#include <smarthome/apply_production_client.hpp>
+
 #include <smarthome/logger.hpp>
+#include <smarthome/apply_production_logger.hpp>
+
 #include <cppject/service_factory.hpp>
 
 #include <CLI/CLI.hpp>
@@ -22,9 +26,14 @@ int main(int argc, char** argv) {
     CLI11_PARSE(cli, argc, argv);
 
     auto serviceFactory = smarthome::ServiceFactory::Instance();
+    auto client = serviceFactory->Get<smarthome::Client>();
     auto logger = serviceFactory->Get<smarthome::Logger>();
-    if (autoDiscover)
+
+    if (autoDiscover) {
+
         logger->info("Auto-discovering devices...");
+        client->DiscoverDevices();
+    }
 
     return 0;
 }

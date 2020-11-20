@@ -1,6 +1,6 @@
 message(STATUS "Handling library headers...")
 
-add_subdirectory("smarthome/client")
+add_subdirectory("smarthome")
 
 target_include_directories(
     smarthome-client

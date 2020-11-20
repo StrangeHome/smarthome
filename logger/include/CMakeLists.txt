@@ -1,6 +1,6 @@
 message(STATUS "Handling logger library headers...")
 
-add_subdirectory("smarthome/logger")
+add_subdirectory("smarthome")
 
 target_include_directories(
     smarthome-logger

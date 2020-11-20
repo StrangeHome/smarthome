@@ -1,6 +1,6 @@
 message(STATUS "Handling smarthome device library headers...")
 
-add_subdirectory("smarthome/device")
+add_subdirectory("smarthome")
 
 target_include_directories(
     smarthome-device
