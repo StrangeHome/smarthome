@@ -20,8 +20,8 @@ int main(int argc, char** argv) {
     // cli.add_option("-c,--config", config, "Provide a configuration with which the system will be started.");
 
     // TODO:
-    bool autoDiscover = false;
-    cli.add_flag("-a,--auto-discover", autoDiscover, "Run auto-discovery of peripheral devices.");
+    bool discoverDevices = false;
+    cli.add_flag("-d,--discover", discoverDevices, "Run auto-discovery of peripheral devices.");
 
     CLI11_PARSE(cli, argc, argv);
 
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     auto client = serviceFactory->Get<smarthome::Client>();
     auto logger = serviceFactory->Get<smarthome::Logger>();
 
-    if (autoDiscover) {
+    if (discoverDevices) {
 
         logger->info("Auto-discovering devices...");
         client->DiscoverDevices();
