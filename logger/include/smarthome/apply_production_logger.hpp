@@ -1,7 +1,7 @@
 #pragma once
 
-#include <smarthome/logger/logger.hpp>
-#include <smarthome/logger/colored_logger.hpp>
+#include <smarthome/logger.hpp>
+#include <smarthome/colored_logger.hpp>
 #include <cppject/service_factory.hpp>
 
 namespace smarthome {

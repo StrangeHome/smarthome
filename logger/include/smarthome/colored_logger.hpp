@@ -1,6 +1,6 @@
 #pragma once
 
-#include <smarthome/logger/logger.hpp>
+#include <smarthome/logger.hpp>
 
 #include <memory>
 #include <spdlog/spdlog.h>

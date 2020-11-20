@@ -1,6 +1,6 @@
-project(smarthome-distribution-tests CXX)
+project(smarthome-client-tests CXX)
 
-add_executable(smarthome-distribution-tests "")
+add_executable(smarthome-client-tests "")
 
 message(STATUS "Adding smarthome testing sources")
 add_subdirectory("src")
@@ -10,13 +10,13 @@ include("extern/upstream/CMakeLists.txt")
 
 message(STATUS "Linking smarthome testing targets")
 target_link_libraries(
-    smarthome-distribution-tests 
-    PUBLIC 
-        smarthome
+    smarthome-client-tests
+    PUBLIC
+        smarthome-client
         gtest gtest_main gmock
 )
 
 add_test(
-    NAME smarthome-distribution-tests
-    COMMAND "$<TARGET_FILE:smarthome-distribution-tests>"
+    NAME smarthome-client-tests
+    COMMAND "$<TARGET_FILE:smarthome-client-tests>"
 )

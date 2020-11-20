@@ -1,6 +1,6 @@
 
-#include <smarthome/logger/apply_production_logger.hpp>
-#include <smarthome/logger/logger.hpp>
+#include <smarthome/apply_production_logger.hpp>
+#include <smarthome/logger.hpp>
 #include <cppject/service_factory.hpp>
 
 #include <CLI/CLI.hpp>

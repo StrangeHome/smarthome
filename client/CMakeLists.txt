@@ -1,7 +1,7 @@
-project(smarthome-core CXX)
+project(smarthome-client CXX)
 
-add_library(smarthome-core INTERFACE)
-add_library(smarthome::core ALIAS smarthome-core)
+add_library(smarthome-client INTERFACE)
+add_library(smarthome::client ALIAS smarthome-client)
 
 include("extern/upstream/CMakeLists.txt")
 
