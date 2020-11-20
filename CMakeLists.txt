@@ -62,6 +62,10 @@ if(INCLUDE_SENSOR_PACKAGE)
 	add_subdirectory("sensor")
 endif()
 
+if(INCLUDE_SMARTHOME_CLI)
+	add_subdirectory("cli")
+endif()
+
 if(INCLUDE_SMARTHOME_DOCS)
 	add_subdirectory("docs")
 endif()
