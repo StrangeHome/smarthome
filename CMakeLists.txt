@@ -51,7 +51,7 @@ option(INCLUDE_SENSOR_PACKAGE "Include sensor package." ${SMARTHOME_MASTER_PROJE
 
 set(SMARTHOME_PACKAGE_DEPENDENCIES "git" "clang" "build-essential" "nodejs" "npm")
 
-add_subdirectory("core")
+add_subdirectory("client")
 add_subdirectory("logger")
 
 if(INCLUDE_DEVICE_PACKAGE)

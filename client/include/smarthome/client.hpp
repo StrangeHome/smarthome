@@ -7,6 +7,11 @@ namespace smarthome {
 	 */
 	class Client {
 		public:
+
+			/**
+			 * Discover the devices connected to the network.
+			 */
+			virtual void DiscoverDevices() const = 0;
 	};
 
 } // namespace smarthome

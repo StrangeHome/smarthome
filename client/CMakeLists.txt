@@ -7,4 +7,6 @@ include("extern/upstream/CMakeLists.txt")
 
 add_subdirectory("include")
 
+target_link_libraries(smarthome-client INTERFACE smarthome-logger cppject)
+
 message(STATUS "Linking smarthome library targets")

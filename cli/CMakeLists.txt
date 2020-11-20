@@ -9,6 +9,7 @@ set_target_properties(smarthome-distribution-cli PROPERTIES OUTPUT_NAME "smartho
 message(STATUS "Linking distribution CLI target libraries")
 target_link_libraries(smarthome-distribution-cli
     PRIVATE
+        smarthome-client
         smarthome-logger
         cppject
         CLI11::CLI11)

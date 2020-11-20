@@ -1,6 +1,8 @@
 #pragma once
 
+#include <smarthome/apply_production_logger.hpp>
 #include <smarthome/logger.hpp>
+
 #include <smarthome/client.hpp>
 #include <smarthome/client_impl.hpp>
 #include <cppject/service_factory.hpp>
