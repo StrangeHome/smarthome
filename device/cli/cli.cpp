@@ -19,9 +19,9 @@ int main(int argc, char** argv) {
     CLI11_PARSE(cli, argc, argv);
 
     auto serviceFactory = ServiceFactory::Instance();
-    auto logger = serviceFactory->Get<smarthome::Logger>();
+    auto& logger = serviceFactory->Get<smarthome::Logger>();
     if (start)
-        logger->info("Starting device...");
+        logger.info("Starting device...");
 
     return 0;
 }

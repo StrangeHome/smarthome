@@ -14,8 +14,8 @@ namespace smarthome {
 
                 serviceFactory->Inject<ColoredLogger, Logger>();
 
-                auto logger = serviceFactory->Get<Logger>();
-                logger->debug("Applied production logger.");
+                auto& logger = serviceFactory->Get<Logger>();
+                logger.debug("Applied production logger.");
             }
     } applyProductionLogger;
 

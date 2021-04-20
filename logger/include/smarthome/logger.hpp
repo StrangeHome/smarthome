@@ -11,8 +11,6 @@ namespace smarthome {
     class Logger {
         public:
 
-            using shared_ptr = std::shared_ptr<Logger>;
-
             /**
              * Log the specified debug message.
              *
